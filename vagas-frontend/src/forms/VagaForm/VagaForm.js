@@ -1,11 +1,14 @@
-import React from 'react';
-import { TextField, Select } from 'final-form-material-ui';
+import React, { useMemo } from 'react';
+import { TextField } from 'final-form-material-ui';
 import createDecorator from 'final-form-focus';
 import { Form, Field } from 'react-final-form';
-import { Button, Grid, MenuItem } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 
 import { validate } from 'utils/validate';
 import schema from './schema';
+import SelectField from 'components/SelectField';
+
+const focusOnErrors = createDecorator();
 
 const provinces = {
   AC: 'Acre',
@@ -37,9 +40,14 @@ const provinces = {
   TO: 'Tocantins',
 };
 
-const focusOnErrors = createDecorator();
-
 function VagaForm({ onSubmit }) {
+  const options = useMemo(() => {
+    return Object.keys(provinces).map(key => ({
+      label: provinces[key],
+      value: key,
+    }));
+  }, []);
+
   return (
     <Form
       onSubmit={onSubmit}
@@ -60,17 +68,10 @@ function VagaForm({ onSubmit }) {
             <Grid item xs={12}>
               <Field
                 name="company.province"
-                component={Select}
+                component={SelectField}
                 label="Estado"
-                variant="outlined"
-                formControlProps={{ fullWidth: true }}
-              >
-                {Object.keys(provinces).map(key => (
-                  <MenuItem key={key} value={key}>
-                    {provinces[key]}
-                  </MenuItem>
-                ))}
-              </Field>
+                options={options}
+              />
             </Grid>
             <Grid item xs={12}>
               <Field
