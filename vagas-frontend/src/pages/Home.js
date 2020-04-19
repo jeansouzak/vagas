@@ -1,23 +1,35 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import history from 'services/history';
-
-import Inovando from 'images/inovando.png';
-import Centered from 'components/Centered';
+import React, { useState, useEffect } from 'react';
+import api from 'services/api';
 
 function Home() {
+  const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function loadCompanies() {
+      setLoading(true);
+      const response = await api.get('job-positions');
+      setLoading(false);
+      setList(response.data.documents);
+    }
+
+    loadCompanies();
+  }, []);
+
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (!list.length) {
+    return <div>Nenhuma vaga encontrada.</div>;
+  }
+
   return (
-    <Centered column>
-      <img src={Inovando} alt="Inovando's Logo" />
-      <div>A template by @inovando</div>
-      <Button
-        style={{ marginTop: 10 }}
-        variant="contained"
-        onClick={() => history.push('/dashboard')}
-      >
-        Go to Dashboard
-      </Button>
-    </Centered>
+    <ul>
+      {list.map(nomeEmpresa => (
+        <li key={nomeEmpresa}>{nomeEmpresa}</li>
+      ))}
+    </ul>
   );
 }
 
