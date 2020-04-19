@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from 'services/api';
+import Container from 'components/Container';
+import VagaList from 'components/VagaList/VagaList';
 
 function Home() {
   const [list, setList] = useState([]);
@@ -16,20 +18,11 @@ function Home() {
     loadCompanies();
   }, []);
 
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
-
-  if (!list.length) {
-    return <div>Nenhuma vaga encontrada.</div>;
-  }
-
   return (
-    <ul>
-      {list.map(nomeEmpresa => (
-        <li key={nomeEmpresa}>{nomeEmpresa}</li>
-      ))}
-    </ul>
+    <Container>
+      <h1>Encontre Vagas de Emprego no Brasil</h1>
+      <VagaList list={list} loading={loading} />
+    </Container>
   );
 }
 
