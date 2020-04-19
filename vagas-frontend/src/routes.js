@@ -2,12 +2,12 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 
 import Home from 'pages/Home';
-import Dashboard from 'pages/Dashboard';
+import VagaRegister from 'pages/VagaRegister';
 import history from 'services/history';
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/dashboard', component: Dashboard },
+  { path: '/register', component: VagaRegister },
 ];
 
 function Routes() {
