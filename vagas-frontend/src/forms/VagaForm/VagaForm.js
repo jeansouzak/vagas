@@ -1,7 +1,11 @@
 import React from 'react';
 import { TextField, Select } from 'final-form-material-ui';
+import createDecorator from 'final-form-focus';
 import { Form, Field } from 'react-final-form';
 import { Button, Grid, MenuItem } from '@material-ui/core';
+
+import { validate } from 'utils/validate';
+import schema from './schema';
 
 const provinces = {
   AC: 'Acre',
@@ -33,10 +37,14 @@ const provinces = {
   TO: 'Tocantins',
 };
 
+const focusOnErrors = createDecorator();
+
 function VagaForm({ onSubmit }) {
   return (
     <Form
       onSubmit={onSubmit}
+      validate={validate(schema)}
+      decorators={[focusOnErrors]}
       render={({ handleSubmit, submitting }) => (
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
