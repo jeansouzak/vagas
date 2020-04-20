@@ -4,6 +4,7 @@ import { Router, Switch, Route } from 'react-router-dom';
 import Home from 'pages/Home';
 import VagaRegister from 'pages/VagaRegister';
 import history from 'services/history';
+import Footer from 'components/Footer/Footer';
 
 const routes = [
   { path: '/', component: Home },
@@ -18,6 +19,7 @@ function Routes() {
   return (
     <Router history={history}>
       <Switch>{routeComponents}</Switch>
+      <Footer></Footer>
     </Router>
   );
 }
