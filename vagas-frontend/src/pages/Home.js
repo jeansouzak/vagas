@@ -21,6 +21,7 @@ function Home() {
   return (
     <Container>
       <h1>Encontre Vagas de Emprego no Brasil</h1>
+      <p>${process.env.REACT_APP_API_URL}</p>
       <VagaList list={list} loading={loading} />
     </Container>
   );
