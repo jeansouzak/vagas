@@ -17,6 +17,7 @@
     "history": "^4.10.1",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.7",
+    "netlify-cli": "^2.47.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-final-form": "^6.3.5",
