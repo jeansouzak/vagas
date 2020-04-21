@@ -4,8 +4,8 @@ Sabemos das demissões em massa que estão acontecendo no país todo e esse proj
 
 # Repositórios
 
-O frontend do projeto está aqui: https://github.com/tekpixo/vagas-frontend
-O backend do projeto está aqui: https://github.com/tekpixo/vagas-backend
+* O frontend do projeto está aqui: https://github.com/tekpixo/vagas-frontend
+* O backend do projeto está aqui: https://github.com/tekpixo/vagas-backend
 
 Sinta-se à vontade para colaborar com o Vagas!
 
